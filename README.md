@@ -9,7 +9,7 @@ The system supports **user authentication**, **role-based authorization**, **swe
 
 ##update the names of all the scrrenshots according to name
 ### 🔐 Landing Page
-![Landing Page](screenshots/landing.png)
+![Landing Page](screenshots/Landing.png)
 
 ### 🔍 Register
 ![Register](screenshots/register.png)
