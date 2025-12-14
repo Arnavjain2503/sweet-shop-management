@@ -1,4 +1,5 @@
 const Sweet = require("../models/Sweet");
+const Order = require("../models/Order");
 
 exports.purchase = async (req, res) => {
   try {
@@ -9,9 +10,23 @@ exports.purchase = async (req, res) => {
 
     sweet.quantity -= 1;
     await sweet.save();
+
+    // Create Order Record
+    await Order.create({
+      user: req.user.id, // Assumes auth middleware populates req.user
+      sweet: sweet._id,
+      name: sweet.name,
+      price: sweet.price,
+      quantity: 1
+    });
+
+
+
+    console.log(`[SUCCESS] Order created for User: ${req.user.id}, Sweet: ${sweet.name}`);
     res.json(sweet);
   } catch (error) {
-    res.status(500).json({ message: "Server error during purchase" });
+    console.error("Purchase Error:", error);
+    res.status(500).json({ message: error.message || "Server error during purchase" });
   }
 };
 

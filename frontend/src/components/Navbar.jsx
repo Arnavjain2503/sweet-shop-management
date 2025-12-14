@@ -26,6 +26,14 @@ export default function Navbar() {
         <LayoutDashboard className="w-5 h-5" />
         Dashboard
       </Link>
+      <Link
+        to="/orders"
+        className="text-white/80 hover:text-white font-medium transition flex items-center gap-2"
+        onClick={() => setIsMobileMenuOpen(false)}
+      >
+        <ShoppingBag className="w-5 h-5" />
+        Orders
+      </Link>
       {(role === "ADMIN" || role === "admin") && (
         <Link
           to="/admin"
@@ -64,6 +72,9 @@ export default function Navbar() {
               <div className="flex items-center gap-6 border-r border-white/10 pr-6">
                 <Link to="/dashboard" className="text-sm font-medium text-white/60 hover:text-white transition">
                   Dashboard
+                </Link>
+                <Link to="/orders" className="text-sm font-medium text-white/60 hover:text-white transition">
+                  Orders
                 </Link>
                 {(role === "ADMIN" || role === "admin") && (
                   <Link to="/admin" className="text-sm font-medium text-white/60 hover:text-white transition">

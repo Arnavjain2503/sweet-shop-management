@@ -6,6 +6,7 @@ import Landing from "./pages/Landing";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Dashboard from "./pages/Dashboard";
+import Orders from "./pages/Orders";
 import Admin from "./pages/Admin";
 
 export default function App() {
@@ -39,6 +40,10 @@ export default function App() {
           <Route
             path="/dashboard"
             element={token ? <Dashboard /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/orders"
+            element={token ? <Orders /> : <Navigate to="/login" />}
           />
 
           {/* Admin only - simplified check, ensure case matches */}
