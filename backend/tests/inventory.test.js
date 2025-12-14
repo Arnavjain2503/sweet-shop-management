@@ -74,4 +74,15 @@ describe("Inventory API", () => {
 
     expect(res.statusCode).toBe(403);
   });
+
+  test("should reject restock with invalid amount", async () => {
+    const res = await request(app)
+      .post(`/api/sweets/${sweetId}/restock`)
+      .set("Authorization", `Bearer ${adminToken}`)
+      .send({ amount: -10 });
+
+    expect(res.statusCode).toBe(400);
+    expect(res.body.message).toBe("Restock amount must be a positive number");
+  });
+
 });
