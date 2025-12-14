@@ -76,4 +76,9 @@ describe("Sweets API", () => {
     expect(res.body.message).toBe("Invalid sweet ID");
   });
 
+  test("should return 401 when accessing sweets without token", async () => {
+    const res = await request(app).get("/api/sweets");
+    expect(res.statusCode).toBe(401);
+  });
+
 });
