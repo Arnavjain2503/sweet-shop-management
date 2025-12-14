@@ -5,6 +5,60 @@ A full-stack **Sweet Shop Management System** featuring a **Node.js/Express** ba
 The system supports **user authentication**, **role-based authorization**, **sweet inventory management**, and **comprehensive integration testing**, wrapped in a beautiful **Glassmorphic Interface**.
 
 ---
+## 📸 Screenshots
+
+##update the names of all the scrrenshots according to name
+### 🔐 Landing Page
+![Landing Page](screenshots/landing.png)
+
+### 🔍 Register
+![Register](screenshots/register.png)
+
+### 📝 Login
+![Login](screenshots/login.png)
+
+### 🏠 User Dashboard
+![User Dashboard](screenshots/dashboard.png)
+
+### 🔍 Purchase
+![Purchase](screenshots/purchase.png)
+
+### 🛠 Out of Stock
+![Out of Stock](screenshots/outofstock.png)
+
+### 📱 Searching
+![Searching](screenshots/searching.png)
+
+### 🔐 Filtering
+![Filtering](screenshots/filtering.png)
+
+### 📝 Orders
+![Orders](screenshots/orders.png)
+
+### 🏠 All Orders
+![All Orders](screenshots/all-orders.png)
+
+### 🛠 Admin Dashboard
+![Admin Dashboard](screenshots/admin-dashboard.png)
+
+### ➕ Admin – Panel    
+![Admin Panel](screenshots/admin-panel.png)
+
+### ➕ Admin – Add Sweet
+![Admin Add Sweet](screenshots/admin-add-sweet.png)
+
+### ➕ Sweet Added - Admin Search
+![Admin Search Sweet](screenshots/admin-search.png)
+
+### ✏️ Admin – Edit / Update Sweet
+![Admin Edit Sweet](screenshots/admin-update.png)
+
+### 📦 Admin – Restock Sweet
+![Admin Restock Sweet](screenshots/admin-restock.png)
+
+### 🗑 Admin – Delete Sweet
+![Admin Delete Sweet](screenshots/admin-delete.png)
+
 
 ## ✨ Features
 
