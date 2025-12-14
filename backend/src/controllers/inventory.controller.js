@@ -11,9 +11,8 @@ exports.purchase = async (req, res) => {
     sweet.quantity -= 1;
     await sweet.save();
 
-    // Create Order Record
     await Order.create({
-      user: req.user.id, // Assumes auth middleware populates req.user
+      user: req.user.id, 
       sweet: sweet._id,
       name: sweet.name,
       price: sweet.price,
@@ -31,25 +30,21 @@ exports.purchase = async (req, res) => {
 };
 
 exports.restock = async (req, res) => {
-  try {
-    const { quantity } = req.body; // Changed from amount to quantity to match frontend
+  const { amount } = req.body;
 
-    if (quantity === undefined || typeof quantity !== "number" || quantity <= 0) {
-      return res.status(400).json({
-        message: "Restock quantity must be a positive number"
-      });
-    }
-
-    const sweet = await Sweet.findById(req.params.id);
-    if (!sweet) {
-      return res.status(404).json({ message: "Sweet not found" });
-    }
-
-    sweet.quantity += quantity;
-    await sweet.save();
-
-    res.json(sweet);
-  } catch (error) {
-    res.status(500).json({ message: "Server error during restock" });
+  if (!amount || amount <= 0) {
+    return res.status(400).json({
+      message: "Restock amount must be a positive number",
+    });
   }
+
+  const sweet = await Sweet.findById(req.params.id);
+  if (!sweet) {
+    return res.status(404).json({ message: "Sweet not found" });
+  }
+
+  sweet.quantity += amount;
+  await sweet.save();
+
+  res.status(200).json(sweet);
 };

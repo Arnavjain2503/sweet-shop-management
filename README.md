@@ -59,6 +59,17 @@ The system supports **user authentication**, **role-based authorization**, **swe
 ### 🗑 Admin – Delete Sweet
 ![Admin Delete Sweet](screenshots/admin-delete.png)
 
+### 🗑 Auth Token 
+![Auth Token](screenshots/auth-token.png)
+
+### 🗑 Register Postman
+![Register Postman](screenshots/register-postman.png)
+
+### 🗑 Tests 
+![Tests](screenshots/tests.png)
+
+### 🗑 All Test Passed
+![All Test Passed](screenshots/all-tests-passed.png)
 
 ## ✨ Features
 
