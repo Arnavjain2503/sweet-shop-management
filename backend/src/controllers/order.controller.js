@@ -1,8 +1,5 @@
 const Order = require("../models/Order");
 
-/**
- * GET YOUR ORDERS
- */
 exports.getMyOrders = async (req, res) => {
     try {
         const orders = await Order.find({ user: req.user.id }).sort({ date: -1 });

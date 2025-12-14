@@ -17,7 +17,6 @@ exports.register = async (req, res) => {
     const hashed = await bcrypt.hash(password, 10);
     const user = await User.create({ ...req.body, password: hashed });
 
-    // Return the token AND role so frontend can update state immediately
     res.status(201).json({
       token: generateToken(user),
       role: user.role
@@ -38,7 +37,7 @@ exports.login = async (req, res) => {
 
     res.json({
       token: generateToken(user),
-      role: user.role // Send role for frontend redirection/state
+      role: user.role 
     });
   } catch (error) {
     res.status(500).json({ message: "Server error during login" });

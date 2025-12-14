@@ -11,7 +11,7 @@ import Admin from "./pages/Admin";
 
 export default function App() {
   const token = localStorage.getItem("token");
-  const role = localStorage.getItem("role"); // Ensure this matches backend "ADMIN" vs "admin"
+  const role = localStorage.getItem("role"); 
   const location = useLocation();
 
   return (

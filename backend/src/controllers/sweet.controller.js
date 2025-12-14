@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
 const Sweet = require("../models/Sweet");
 
-/**
- * CREATE SWEET (ADMIN)
- */
 exports.create = async (req, res) => {
   try {
     const { name, category, price, quantity } = req.body;
@@ -25,25 +22,16 @@ exports.create = async (req, res) => {
   }
 };
 
-/**
- * GET ALL SWEETS
- */
 exports.getAll = async (req, res) => {
   const sweets = await Sweet.find();
   res.json(sweets);
 };
 
-/**
- * SEARCH SWEETS
- */
 exports.search = async (req, res) => {
   const sweets = await Sweet.find(req.query);
   res.json(sweets);
 };
 
-/**
- * UPDATE SWEET (ADMIN)
- */
 exports.update = async (req, res) => {
   const { id } = req.params;
 
@@ -60,9 +48,6 @@ exports.update = async (req, res) => {
   res.json(updated);
 };
 
-/**
- * DELETE SWEET (ADMIN)
- */
 exports.remove = async (req, res) => {
   try {
     const { id } = req.params;
