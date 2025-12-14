@@ -5,20 +5,24 @@ const Sweet = require("../models/Sweet");
  * CREATE SWEET (ADMIN)
  */
 exports.create = async (req, res) => {
-  const { name, category, price, quantity } = req.body;
+  try {
+    const { name, category, price, quantity } = req.body;
 
-  if (!name || !category || price == null || quantity == null) {
-    return res.status(400).json({ message: "All fields are required" });
+    if (!name || !category || price == null || quantity == null) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const sweet = await Sweet.create({
+      name,
+      category,
+      price,
+      quantity
+    });
+
+    res.status(201).json(sweet);
+  } catch (error) {
+    res.status(500).json({ message: "Server error during creation" });
   }
-
-  const sweet = await Sweet.create({
-    name,
-    category,
-    price,
-    quantity
-  });
-
-  res.status(201).json(sweet);
 };
 
 /**
@@ -60,17 +64,21 @@ exports.update = async (req, res) => {
  * DELETE SWEET (ADMIN)
  */
 exports.remove = async (req, res) => {
-  const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({ message: "Invalid sweet ID" });
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid sweet ID" });
+    }
+
+    const deleted = await Sweet.findByIdAndDelete(id);
+
+    if (!deleted) {
+      return res.status(404).json({ message: "Sweet not found" });
+    }
+
+    res.sendStatus(204);
+  } catch (error) {
+    res.status(500).json({ message: "Server error during deletion" });
   }
-
-  const deleted = await Sweet.findByIdAndDelete(id);
-
-  if (!deleted) {
-    return res.status(404).json({ message: "Sweet not found" });
-  }
-
-  res.sendStatus(204);
 };

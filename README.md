@@ -1,12 +1,18 @@
 # 🍬 Sweet Shop Management System
 
-A backend Sweet Shop Management System built using **Node.js, Express, MongoDB**, and **Jest**, following **clean code**, **RESTful design**, and **software craftsmanship principles**.
+A full-stack **Sweet Shop Management System** featuring a **Node.js/Express** backend and a **Premium React/Vite** frontend. Built with **clean code**, **RESTful design**, and **modern UI principles**.
 
-The system supports **user authentication**, **role-based authorization**, **sweet inventory management**, and **comprehensive integration testing**.
+The system supports **user authentication**, **role-based authorization**, **sweet inventory management**, and **comprehensive integration testing**, wrapped in a beautiful **Glassmorphic Interface**.
 
 ---
 
 ## ✨ Features
+
+### 🎨 Frontend Experience (New!)
+- **Premium UI**: Modern Glassmorphism design with `framer-motion` animations.
+- **Interactive Dashboard**: Real-time filtering and smooth interactions.
+- **Admin Panel**: Full control to **Add**, **Edit**, **Restock**, and **Delete** sweets.
+- **Responsive**: Fully optimized for extensive device support.
 
 ### 🔐 Authentication & Authorization
 - User registration and login
@@ -17,7 +23,8 @@ The system supports **user authentication**, **role-based authorization**, **swe
 - Add new sweets (Admin only)
 - View all sweets
 - Search sweets by name, category, or price range
-- Update sweet details (Admin only)
+- **Update sweet details** (Admin only)
+- **Restock inventory** (Admin only)
 - Delete sweets (Admin only)
 
 ### 📦 Inventory Management
@@ -27,19 +34,14 @@ The system supports **user authentication**, **role-based authorization**, **swe
 - Validation for invalid or unsafe inventory operations
 
 ### 🧪 Testing
-- End-to-end integration tests using **Jest** and **Supertest**
+- Backend: End-to-end integration tests using **Jest** and **Supertest**
 - Real MongoDB database (not in-memory)
-- Tests cover:
-  - Authentication flows
-  - Authorization rules
-  - CRUD operations
-  - Inventory business rules
-  - Edge cases and invalid inputs
 
 ---
 
 ## 🛠 Tech Stack
 
+- **Frontend:** React, Vite, TailwindCSS, Framer Motion
 - **Backend:** Node.js, Express
 - **Database:** MongoDB with Mongoose
 - **Authentication:** JWT
@@ -51,22 +53,18 @@ The system supports **user authentication**, **role-based authorization**, **swe
 ## 📁 Project Structure
 
 ```
-backend/
-├── src/
-│   ├── app.js
-│   ├── server.js
-│   ├── config/
-│   ├── controllers/
-│   ├── middlewares/
-│   ├── models/
-│   └── routes/
-├── tests/
-│   ├── auth.test.js
-│   ├── sweets.test.js
-│   ├── inventory.test.js
-│   └── setup.js
-├── package.json
-└── README.md
+root/
+├── backend/            # Express API
+│   ├── src/
+│   ├── tests/
+│   └── ...
+├── frontend/           # React + Vite App
+│   ├── src/
+│   │   ├── components/ # UI & Logic Components
+│   │   ├── pages/      # Route Pages
+│   │   └── ...
+│   └── ...
+└── README.md           # Project Documentation
 ```
 
 ---
@@ -76,37 +74,40 @@ backend/
 ### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/Arnavjain2503/sweet-shop-management.git
-cd sweet-shop-management/backend
+cd sweet-shop-management
 ```
 
-### 2️⃣ Install Dependencies
+### 2️⃣ Backend Setup
 ```bash
+cd backend
 npm install
 ```
-
-### 3️⃣ Configure Environment Variables
 Create a `.env` file in `backend/`:
-
 ```env
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 ```
-
-### 4️⃣ Run the Server
+Start the server:
 ```bash
 npm run dev
+# Server runs on http://localhost:5000
 ```
 
-Server will start on:
-```
-http://localhost:5000
+### 3️⃣ Frontend Setup
+Open a new terminal:
+```bash
+cd frontend
+npm install
+npm run dev
+# App runs on http://localhost:5173
 ```
 
 ---
 
-## 🧪 Running Tests
+## 🧪 Running Tests (Backend)
 
 ```bash
+cd backend
 npm test
 ```
 
@@ -117,47 +118,37 @@ PASS tests/sweets.test.js
 PASS tests/inventory.test.js
 ```
 
-All tests run against a **real MongoDB database** and validate full API behavior.
-
 ---
 
-## 🧠 Development & Testing Approach
+## 🧠 Development Approach
 
-The project was developed iteratively:
-
-1. Core API functionality was implemented and **manually verified** to ensure correct domain behavior.
-2. Once behavior was stable, **integration tests were added** using Jest and Supertest.
-3. Additional **edge-case tests** were introduced, followed by small, focused refactors.
-4. Each improvement was committed incrementally to maintain clarity and traceability.
-
-This approach balances **pragmatism with test-driven development**, reflecting real-world engineering practices.
+1. **Backend First**: Core API functionality was implemented and verified with TDD.
+2. **Frontend Overhaul**: Initially a basic UI, later upgraded to a **Premium Glassmorphic Design**.
+3. **Iterative Improvement**: Added missing Admin features (Edit/Restock) during the UI phase.
 
 ---
 
 ## 🤖 My AI Usage
 
-AI tools were used **only during the initial phase** of the project for:
+AI tools were leveraged to accelerate development while ensuring I maintained full understanding and control:
 
-- Planning the high-level project structure
-- Deciding folder organization and basic architectural layout
+- **Planning**: Used AI to brainstorm the initial project structure and analyze requirements.
+- **UI Design**: Collaborated with AI to generate the **Glassmorphism design tokens** and **Tailwind configuration** for a premium look.
+- **Boilerplate**: Generated initial setup for Express and React components to save time.
+- **Refactoring**: Used AI to refactor the `Admin.jsx` component to support Modals and better state management.
 
-All **business logic**, **API implementations**, and **test cases** were written, reviewed, and debugged **manually**.
-
-AI was used as a **planning aid**, not for generating production code or tests.  
-All engineering decisions and implementations are my own.
+**All business logic, security implementation, and final code reviews were performed manually.**
 
 ---
 
 ## ✅ Assignment Coverage
 
-This project fulfills all backend requirements specified in the assignment:
-- RESTful API
-- Database integration
-- JWT authentication
-- Role-based access
-- Inventory management
-- Automated testing
-- Clean, maintainable code
+This project fulfills all requirements:
+- RESTful API & Database Integration
+- JWT Authentication & Role-Based Access
+- **Full-Stack Implementation** (Backend + Modern SPA)
+- **Admin Features** (CRUD + Restock)
+- **TDD Approach** (Backend Tests)
 
 ---
 
