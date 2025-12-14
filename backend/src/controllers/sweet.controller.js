@@ -1,5 +1,9 @@
+const mongoose = require("mongoose");
 const Sweet = require("../models/Sweet");
 
+/**
+ * CREATE SWEET (ADMIN)
+ */
 exports.create = async (req, res) => {
   const { name, category, price, quantity } = req.body;
 
@@ -7,24 +11,66 @@ exports.create = async (req, res) => {
     return res.status(400).json({ message: "All fields are required" });
   }
 
-  const sweet = await Sweet.create({ name, category, price, quantity });
+  const sweet = await Sweet.create({
+    name,
+    category,
+    price,
+    quantity
+  });
+
   res.status(201).json(sweet);
 };
 
-
+/**
+ * GET ALL SWEETS
+ */
 exports.getAll = async (req, res) => {
-  res.json(await Sweet.find());
+  const sweets = await Sweet.find();
+  res.json(sweets);
 };
 
+/**
+ * SEARCH SWEETS
+ */
 exports.search = async (req, res) => {
-  res.json(await Sweet.find(req.query));
+  const sweets = await Sweet.find(req.query);
+  res.json(sweets);
 };
 
+/**
+ * UPDATE SWEET (ADMIN)
+ */
 exports.update = async (req, res) => {
-  res.json(await Sweet.findByIdAndUpdate(req.params.id, req.body, { new: true }));
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ message: "Invalid sweet ID" });
+  }
+
+  const updated = await Sweet.findByIdAndUpdate(id, req.body, { new: true });
+
+  if (!updated) {
+    return res.status(404).json({ message: "Sweet not found" });
+  }
+
+  res.json(updated);
 };
 
+/**
+ * DELETE SWEET (ADMIN)
+ */
 exports.remove = async (req, res) => {
-  await Sweet.findByIdAndDelete(req.params.id);
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ message: "Invalid sweet ID" });
+  }
+
+  const deleted = await Sweet.findByIdAndDelete(id);
+
+  if (!deleted) {
+    return res.status(404).json({ message: "Sweet not found" });
+  }
+
   res.sendStatus(204);
 };
